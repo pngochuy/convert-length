@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./style.css";
 import { meterConvert, toMeter } from "./convertObject.js";
+import { flushSync } from "react-dom";
 function App() {
   /**
    * - Lấy đc giá trị 2 ô input
@@ -10,12 +11,13 @@ function App() {
     inputValue: "",
     selectValue: "km",
   });
-  //
+
   const [object2, setObject2] = useState({
     inputValue: "",
     selectValue: "km",
   });
-
+  const inputRef = useRef();
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
   /* LÀM SWITCH CASE: 7 đơn vị */
   const handleConvert = () => {
     // (km -> hm); (hm -> dam); (dam -> m); (m -> km; m -> dm); (dm -> hm; dm -> cm); (cm -> dam; cm -> mm); (mm -> km; mm -> m)
@@ -28,43 +30,51 @@ function App() {
               case "km":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue),
+                  inputValue: parseFloat(object1.inputValue).toFixed(3),
                 });
                 break;
               case "hm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10,
+                  inputValue: (parseFloat(object1.inputValue) * 10).toFixed(3),
                 });
                 break;
               case "dam":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 100,
+                  inputValue: (parseFloat(object1.inputValue) * 100).toFixed(3),
                 });
                 break;
               case "m":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 1000,
+                  inputValue: (parseFloat(object1.inputValue) * 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "dm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10000,
+                  inputValue: (parseFloat(object1.inputValue) * 10000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "cm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 100000,
+                  inputValue: (parseFloat(object1.inputValue) * 100000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "mm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 1000000,
+                  inputValue: (
+                    parseFloat(object1.inputValue) * 1000000
+                  ).toFixed(3),
                 });
                 break;
               default:
@@ -76,43 +86,49 @@ function App() {
               case "km":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10,
+                  inputValue: (parseFloat(object1.inputValue) / 10).toFixed(3),
                 });
                 break;
               case "hm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue),
+                  inputValue: parseFloat(object1.inputValue).toFixed(3),
                 });
                 break;
               case "dam":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10,
+                  inputValue: (parseFloat(object1.inputValue) * 10).toFixed(3),
                 });
                 break;
               case "m":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 100,
+                  inputValue: (parseFloat(object1.inputValue) * 100).toFixed(3),
                 });
                 break;
               case "dm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 1000,
+                  inputValue: (parseFloat(object1.inputValue) * 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "cm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10000,
+                  inputValue: (parseFloat(object1.inputValue) * 10000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "mm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 100000,
+                  inputValue: (parseFloat(object1.inputValue) * 100000).toFixed(
+                    3
+                  ),
                 });
                 break;
               default:
@@ -124,43 +140,47 @@ function App() {
               case "km":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 100,
+                  inputValue: (parseFloat(object1.inputValue) / 100).toFixed(3),
                 });
                 break;
               case "hm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10,
+                  inputValue: (parseFloat(object1.inputValue) / 10).toFixed(3),
                 });
                 break;
               case "dam":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue),
+                  inputValue: parseFloat(object1.inputValue).toFixed(3),
                 });
                 break;
               case "m":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10,
+                  inputValue: (parseFloat(object1.inputValue) * 10).toFixed(3),
                 });
                 break;
               case "dm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 100,
+                  inputValue: (parseFloat(object1.inputValue) * 100).toFixed(3),
                 });
                 break;
               case "cm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 1000,
+                  inputValue: (parseFloat(object1.inputValue) * 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "mm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10000,
+                  inputValue: (parseFloat(object1.inputValue) * 10000).toFixed(
+                    3
+                  ),
                 });
                 break;
               default:
@@ -172,43 +192,47 @@ function App() {
               case "km":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 1000,
+                  inputValue: (parseFloat(object1.inputValue) / 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "hm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 100,
+                  inputValue: (parseFloat(object1.inputValue) / 100).toFixed(3),
                 });
                 break;
               case "dam":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10,
+                  inputValue: (parseFloat(object1.inputValue) / 10).toFixed(3),
                 });
                 break;
               case "m":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue),
+                  inputValue: parseFloat(object1.inputValue).toFixed(3),
                 });
                 break;
               case "dm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10,
+                  inputValue: (parseFloat(object1.inputValue) * 10).toFixed(3),
                 });
                 break;
               case "cm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 100,
+                  inputValue: (parseFloat(object1.inputValue) * 100).toFixed(3),
                 });
                 break;
               case "mm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 1000,
+                  inputValue: (parseFloat(object1.inputValue) * 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               default:
@@ -220,43 +244,47 @@ function App() {
               case "km":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10000,
+                  inputValue: (parseFloat(object1.inputValue) / 10000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "hm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 1000,
+                  inputValue: (parseFloat(object1.inputValue) / 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "dam":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 100,
+                  inputValue: (parseFloat(object1.inputValue) / 100).toFixed(3),
                 });
                 break;
               case "m":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10,
+                  inputValue: (parseFloat(object1.inputValue) / 10).toFixed(3),
                 });
                 break;
               case "dm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue),
+                  inputValue: parseFloat(object1.inputValue).toFixed(3),
                 });
                 break;
               case "cm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10,
+                  inputValue: (parseFloat(object1.inputValue) * 10).toFixed(3),
                 });
                 break;
               case "mm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 100,
+                  inputValue: (parseFloat(object1.inputValue) * 100).toFixed(3),
                 });
                 break;
               default:
@@ -268,43 +296,49 @@ function App() {
               case "km":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 100000,
+                  inputValue: (parseFloat(object1.inputValue) / 100000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "hm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10000,
+                  inputValue: (parseFloat(object1.inputValue) / 10000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "dam":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 1000,
+                  inputValue: (parseFloat(object1.inputValue) / 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "m":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 100,
+                  inputValue: (parseFloat(object1.inputValue) / 100).toFixed(3),
                 });
                 break;
               case "dm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10,
+                  inputValue: (parseFloat(object1.inputValue) / 10).toFixed(3),
                 });
                 break;
               case "cm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue),
+                  inputValue: parseFloat(object1.inputValue).toFixed(3),
                 });
                 break;
               case "mm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) * 10,
+                  inputValue: (parseFloat(object1.inputValue) * 10).toFixed(3),
                 });
                 break;
               default:
@@ -316,43 +350,51 @@ function App() {
               case "km":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 1000000,
+                  inputValue: (
+                    parseFloat(object1.inputValue) / 1000000
+                  ).toFixed(3),
                 });
                 break;
               case "hm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 100000,
+                  inputValue: (parseFloat(object1.inputValue) / 100000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "dam":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10000,
+                  inputValue: (parseFloat(object1.inputValue) / 10000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "m":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 1000,
+                  inputValue: (parseFloat(object1.inputValue) / 1000).toFixed(
+                    3
+                  ),
                 });
                 break;
               case "dm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 100,
+                  inputValue: (parseFloat(object1.inputValue) / 100).toFixed(3),
                 });
                 break;
               case "cm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue) / 10,
+                  inputValue: (parseFloat(object1.inputValue) / 10).toFixed(3),
                 });
                 break;
               case "mm":
                 setObject2({
                   ...object2,
-                  inputValue: parseFloat(object1.inputValue),
+                  inputValue: parseFloat(object1.inputValue).toFixed(3),
                 });
                 break;
               default:
@@ -362,9 +404,23 @@ function App() {
           default:
             break;
         }
+        handleButton();
+        inputRef.current.focus();
+      } else {
+        alert("No input!");
+        inputRef.current.focus();
       }
     } else {
       alert("Wrong input!");
+      setObject1({
+        ...object1,
+        inputValue: "",
+      });
+      setObject2({
+        ...object2,
+        inputValue: "",
+      });
+      inputRef.current.focus();
     }
 
     // convert từ value 2 -> value 1
@@ -715,19 +771,13 @@ function App() {
   const handlePressEnter = (e) => {
     if (e.code === "Enter") handleConvert();
   };
-  const handleDelete1 = () => {
-    console.log(object2.inputValue);
-    setObject2({
-      ...object2,
-      inputValue: "",
-    });
-    console.log(object2.inputValue);
-  };
-  const handleDelete2 = () => {
-    setObject1({
-      ...object2,
-      inputValue: "",
-    });
+  const handleButton = () => {
+    setIsAlertVisible(true);
+
+    setTimeout(() => {
+      setIsAlertVisible(false);
+      return "Done";
+    }, 2000);
   };
   /* LÀM HÀM CHECK INPUT NHẬP VÀO LÀ SỐ HAY CHUỖI (isNaN(string)) */
   /* NẾU SAI THÌ LÀM HÀM TỰ XÓA KHI NHẬP SAI INPUT, NẾU ĐÚNG THÌ DÙNG HÀM handleConvert(c) */
@@ -748,18 +798,21 @@ function App() {
   };
   return (
     <>
+      <div className="title">
+        <h3>Length Converter Tool</h3>
+      </div>
       <div className="wrapper">
         <div className="convert-left">
           <input
             type="text"
-            placeholder="value1"
+            placeholder="--"
             value={object1.inputValue}
             onChange={(e) => {
               setObject1({ ...object1, inputValue: e.target.value });
               console.log(e.target.value);
             }}
             onKeyDown={(e) => handlePressEnter(e)}
-            // onClick={() => handleDelete1()}
+            ref={inputRef}
           />
           <select
             id="u"
@@ -788,14 +841,13 @@ function App() {
         <div className="convert-right">
           <input
             type="text"
-            placeholder="value2"
+            placeholder="--"
             value={object2.inputValue}
             onChange={(e) => {
               setObject2({ ...object2, inputValue: e.target.value });
               console.log(e.target.value);
             }}
             onKeyDown={(e) => handlePressEnter(e)}
-            // onClick={() => handleDelete2()}
           ></input>
 
           <select
@@ -818,6 +870,13 @@ function App() {
           <h4>Selected unit: {object2.selectValue}</h4>
         </div>
       </div>
+      {isAlertVisible && (
+        <div className="alert-container">
+          <div class="line">
+            <h2 class="lineUp">Done</h2>
+          </div>
+        </div>
+      )}
     </>
   );
 }
