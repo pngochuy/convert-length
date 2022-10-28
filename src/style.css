@@ -1,0 +1,136 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #d9f6f6;
+  font-family: "Dank Mono", ui-monospace, monospace;
+}
+.title {
+  font-size: 20px;
+  margin: 0px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid red;
+}
+.wrapper {
+  width: 60vw;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+  border-radius: 20px;
+}
+.convert-left {
+  width: 40%;
+  padding-left: 70px;
+}
+.convert-right {
+  width: 40%;
+}
+.button {
+  width: 20%;
+}
+
+input {
+  width: 30%;
+  padding: 12px 20px;
+  margin: 10px 0;
+  border-radius: 30px;
+  font-size: 15px;
+  border: 2px solid #fff0f5;
+}
+input:hover,
+select:hover {
+  background-color: rgb(248, 240, 229);
+}
+
+select {
+  height: 44px;
+  width: 30%;
+  padding: 12px 20px;
+  border-radius: 30px;
+  margin-left: 5px;
+  border: 2px solid #ffe4e1;
+}
+
+.btn {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #fff;
+}
+
+.btn:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+h4 {
+  font-style: italic;
+  font-size: 15px;
+}
+
+.alert-container {
+  /* position: absolute;
+  top: 2rem;
+  left: 0;
+  right: 0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* clear background */
+h2 {
+  text-align: center;
+  padding: 16px;
+  margin: 0;
+  color: #3d8dae;
+}
+
+/* crops animations that exceeds one line area */
+.line {
+  /* display: inline-block; */
+  width: fit-content;
+  height: 4rem;
+  overflow: hidden;
+  padding: 0;
+  margin-bottom: 16px;
+  border: 2px solid #3d8dae;
+  border-radius: 50%;
+}
+/* lineup class and keyframes */
+.lineUp {
+  animation: 2s anim-lineUp ease-out infinite;
+}
+@keyframes anim-lineUp {
+  0% {
+    opacity: 0;
+    transform: translateY(80%);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
